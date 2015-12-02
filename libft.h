@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 13:21:24 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/01 14:04:03 by fsidler          ###   ########.fr       */
+/*   Updated: 2015/12/02 11:25:50 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@
 # define UC unsigned char
 # include <stdlib.h>
 # include <string.h>
+# include <unistd.h>
 
-int		ft_isalnum(int c);
-int		ft_isalpha(int c);
 int		ft_isascii(int c);
-int		ft_isdigit(int c);
 int		ft_isprint(int c);
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isalnum(int c);
 
 int		ft_tolower(int c);
 int		ft_toupper(int c);
