@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 17:24:09 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/01 13:57:46 by fsidler          ###   ########.fr       */
+/*   Updated: 2015/12/02 17:43:21 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ char	*ft_strstr(const char *total, const char *find)
 		}
 		if (find[i] == '\0')
 			return ((char *)(total + (j - i)));
+		j = j - i + 1;
 		i = 0;
 	}
 	return (NULL);

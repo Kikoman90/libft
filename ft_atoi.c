@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/26 15:12:17 by fsidler           #+#    #+#             */
-/*   Updated: 2015/11/26 15:24:38 by fsidler          ###   ########.fr       */
+/*   Created: 2015/12/02 14:35:20 by fsidler           #+#    #+#             */
+/*   Updated: 2015/12/02 14:35:39 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,20 @@ int		ft_atoi(char *str)
 	r = 0;
 	i = 0;
 	s = 1;
-	if (str[0] == '-')
+	while (str[i] == ' ' || str[i] == '	' || str[i] == '\n' ||\
+		str[i] == '\t' || str[i] == '\f' || str[i] == '\v' || str[i] == '\r')
+		i++;
+	if (str[i] == '-')
 	{
 		i++;
 		s = -1;
 	}
+	else if (str[i] == '+')
+		i++;
 	while (str[i] && str[i] >= '0' && str[i] <= '9')
 	{
-		if (str[i] < '0' || str[i] > '9')
+		if ((str[i] < '0' || str[i] > '9') && str[i] != ' ' &&\
+			str[i] != '	' && str[i] != '+' && str[i] != '-')
 			return (0);
 		r = r * 10 + str[i] - '0';
 		i++;
