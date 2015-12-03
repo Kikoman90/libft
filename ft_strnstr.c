@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 14:22:20 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/01 13:59:48 by fsidler          ###   ########.fr       */
+/*   Created: 2015/12/03 13:22:37 by fsidler           #+#    #+#             */
+/*   Updated: 2015/12/03 14:13:57 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,22 @@ char	*ft_strnstr(const char *total, const char *find, size_t n)
 
 	i = 0;
 	j = 0;
-	if (n < ft_strlen(find))
-		return (NULL);
-	if (n > ft_strlen(find))
-		n = ft_strlen(find);
-	if (n == 0)
-		return ((char *)total);
-	while (total[j])
+	if (!*find)
+		return ((char *)(total));
+	if (n > ft_strlen(total))
+		n = ft_strlen(total);
+	while (j < n)
 	{
-		while (total[j] && find[i] != total[j])
+		while (find[i] != total[j] && j < n)
 			j++;
-		while (total[j] && find[i] == total[j])
+		while (find[i] == total[j] && j < n)
 		{
 			i++;
 			j++;
 		}
-		if (i >= n)
+		if (!find[i])
 			return ((char *)(total + (j - i)));
+		j = j - i + 1;
 		i = 0;
 	}
 	return (NULL);
