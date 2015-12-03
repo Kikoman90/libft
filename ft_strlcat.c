@@ -6,51 +6,30 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 14:44:52 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/02 18:01:41 by fsidler          ###   ########.fr       */
+/*   Updated: 2015/12/03 17:45:09 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h> //retirer
-#include <string.h> //retirer
 
 size_t	ft_strlcat(char *dest, const char *src, size_t n)
 {
 	size_t	i;
-	size_t	l;
-	size_t	p;
 	size_t	j;
+	size_t	m;
 
 	i = 0;
-	p = 0;
-	l = 0;
 	j = 0;
-	while (src[l])
-		l++;
-	while (dest[i] != 0)
+	while (dest[i] && i < n)
 		i++;
-	while (dest[p])
-		p++;
-	if (n > p + l)
-		n = p + l;
-	while (n < p + l && j < l)
+	m = i;
+	while (src[j] && i < n - 1)
 	{
-		if (n < p + l && j < l && n + i < p)
-			dest[i] = src[j];
+		dest[i] = src[j];
 		i++;
 		j++;
-		n++;
 	}
-	//dest[n + i] = '\0';
-	return (n);
+	if (m < n)
+		dest[i] = '\0';
+	return (m + ft_strlen(src));
 }
-
-/*int		main(void)
-{
-	char buf1[10] = "abc";
-	char buf2[10] = "abc";
-	printf("%lu | %lu\n", ft_strlcat(buf1, "abcdefghijklmnop", 10), strlcat(buf2, "abcdefhgijklmnop", 10));
-	printf("%s\n", buf1);
-	printf("%s", buf2);
-	return (0);
-}*/
