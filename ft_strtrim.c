@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 16:02:13 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/05 17:02:40 by fsidler          ###   ########.fr       */
+/*   Updated: 2015/12/05 17:42:27 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ char	*ft_strtrim(char const *s)
 	unsigned int	j;
 
 	i = 0;
-	j = 0;
-	j = ft_strlen(s);
-	j -= 1;
+	j = ft_strlen(s) - 1;
 	while (s[j] == ' ' || s[j] == '\t' || s[j] == '\n')
 		j--;
 	while (s[i] == ' ' || s[i] == '\t' || s[i] == '\n')
@@ -33,5 +31,6 @@ char	*ft_strtrim(char const *s)
 	i = 0;
 	while (i < j)
 		t[i++] = *s++;
+	t[i] = '\0';
 	return (t);
 }
