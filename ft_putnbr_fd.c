@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 17:36:49 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/05 15:00:08 by fsidler          ###   ########.fr       */
+/*   Created: 2015/12/05 11:46:59 by fsidler           #+#    #+#             */
+/*   Updated: 2015/12/05 11:48:07 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*dest;
-
-	if ((dest = (char *)malloc(sizeof(char) * size + 1)) == NULL)
-		return (NULL);
-	while (size--)
-		dest[size] = '\0';
-	return (dest);
+	if (n < 0)
+	{
+		n = -n;
+		ft_putchar_fd('-', fd);
+	}
+	if (n > 9)
+	{
+		ft_putnbr_fd(n / 10);
+		ft_putnbr_fd(n % 10);
+	}
+	else
+		ft_putchar_fd(n + '0', fd);
 }

@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 17:36:49 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/05 15:00:08 by fsidler          ###   ########.fr       */
+/*   Created: 2015/12/05 12:02:43 by fsidler           #+#    #+#             */
+/*   Updated: 2015/12/05 12:10:21 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strnew(size_t size)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	char	*dest;
+	unsigned int	i;
 
-	if ((dest = (char *)malloc(sizeof(char) * size + 1)) == NULL)
-		return (NULL);
-	while (size--)
-		dest[size] = '\0';
-	return (dest);
+	i = 0;
+	if (s && f)
+	{
+		while (*s)
+			f(i++, s++);
+	}
 }

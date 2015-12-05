@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 17:36:49 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/05 15:00:08 by fsidler          ###   ########.fr       */
+/*   Created: 2015/12/05 14:12:52 by fsidler           #+#    #+#             */
+/*   Updated: 2015/12/05 14:13:23 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	char	*dest;
-
-	if ((dest = (char *)malloc(sizeof(char) * size + 1)) == NULL)
-		return (NULL);
-	while (size--)
-		dest[size] = '\0';
-	return (dest);
+	if (ft_strncmp(s1, s2, n) == 0)
+		return (1);
+	return (0);
 }

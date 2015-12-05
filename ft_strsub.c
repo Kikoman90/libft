@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 17:36:49 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/05 15:00:08 by fsidler          ###   ########.fr       */
+/*   Created: 2015/12/05 14:36:36 by fsidler           #+#    #+#             */
+/*   Updated: 2015/12/05 16:08:44 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*dest;
+	char			*t;
+	unsigned int	i;
 
-	if ((dest = (char *)malloc(sizeof(char) * size + 1)) == NULL)
+	i = 0;
+	if((t = (char *)malloc(sizeof(char) * len + 1)) == NULL)
 		return (NULL);
-	while (size--)
-		dest[size] = '\0';
-	return (dest);
+	while (len != 0 && s[start])
+	{
+		t[i++] = s[start++];
+		len--;
+	}
+	return (t);
 }
