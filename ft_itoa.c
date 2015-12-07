@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/05 11:46:59 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/07 18:32:36 by fsidler          ###   ########.fr       */
+/*   Created: 2015/12/07 17:35:58 by fsidler           #+#    #+#             */
+/*   Updated: 2015/12/07 17:41:24 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+char	*ft_itoa(int n)
 {
-	if (n == -2147483648)
-		ft_putstr_fd("-2147483648", fd);
-	else
+	unsigned		i;
+	int				j;
+	char			*str;
+
+	i = 0;
+	j = n;
+	if (n < 0)
+		i++;
+	while (j /= 10)
+		i++;
+	if ((str = (char *)malloc(sizeof(char) * ++i)) == NULL)
+		return (NULL);
+	if (n < 0)
 	{
-		if (n < 0)
-		{
-			n = -n;
-			ft_putchar_fd('-', fd);
-		}
-		if (n > 9)
-			ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd(n % 10 + '0', fd);
+		str[0] = '-';
+		n *= -1;
 	}
+	str[i--] = '\0';
+	str[i--] = (n % 10) + '0';
+	while (n /= 10)
+		str[i--] = (n % 10) + '0';
+	return (str);
 }

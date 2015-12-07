@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 17:04:18 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/01 13:51:58 by fsidler          ###   ########.fr       */
+/*   Updated: 2015/12/07 14:13:44 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,10 @@
 void	*ft_memalloc(size_t size)
 {
 	void			*dest;
-	size_t			i;
 
-	i = 0;
-	if ((dest = (void *)malloc(sizeof(void) * size + 1)) == NULL)
+	if ((dest = (void *)malloc(size)) == NULL)
 		return (NULL);
-	while (i < size)
-	{
-		((unsigned char *)dest)[i] = 0;
-		i++;
-	}
+	while (size--)
+		((UC *)dest)[size] = 0;
 	return (dest);
 }
