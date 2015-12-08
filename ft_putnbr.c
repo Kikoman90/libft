@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 17:50:41 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/07 18:29:04 by fsidler          ###   ########.fr       */
+/*   Updated: 2015/12/08 13:21:47 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,9 @@
 
 void	ft_putnbr(int n)
 {
-	if (n == -2147483648)
-		ft_putstr("-2147483648");
-	else
-	{
-		if (n < 0)
-		{
-			n = -n;
-			ft_putchar('-');
-		}
-		if (n > 9)
-			ft_putnbr(n / 10);
-		ft_putchar(n % 10 + 48);
-	}
+	if (n < 0)
+		ft_putchar('-');
+	if (n > 9 || n < -9)
+		ft_putnbr(ft_abs(n / 10));
+	ft_putchar(ft_abs(n % 10) + 48);
 }
