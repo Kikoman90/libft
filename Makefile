@@ -6,7 +6,7 @@
 #    By: fsidler <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/02 11:09:55 by fsidler           #+#    #+#              #
-#    Updated: 2015/12/08 13:19:22 by fsidler          ###   ########.fr        #
+#    Updated: 2015/12/09 14:37:43 by fsidler          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,12 @@ SRC = ft_isascii.c \
 	  ft_strequ.c \
 	  ft_strnequ.c \
 	  ft_abs.c \
+	  ft_lstdelone.c \
+	  ft_lstdel.c \
+	  ft_lstadd.c \
+	  ft_lstiter.c \
+	  ft_lstnew.c \
+	  ft_lstmap.c \
 
 OBJ = $(SRC:.c=.o)
 
