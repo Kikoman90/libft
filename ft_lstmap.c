@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 14:09:03 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/09 17:24:56 by fsidler          ###   ########.fr       */
+/*   Updated: 2015/12/10 14:14:34 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list *new;
+	t_list	*new;
+	t_list	*tmp;
 
-	if ((new = (t_list *)malloc(sizeof(lst))) == NULL)
-		return (NULL);
+	new = ft_lstnew(f(lst)->content, f(lst)->content_size);
+	tmp = new;
+	lst = lst->next;
 	while (lst)
 	{
-		if ((new->content = (void *)malloc(sizeof(f(lst)->content))) == NULL)
+		if (!(tmp->next = ft_lstnew(f(lst)->content, f(lst)->content_size)))
 			return (NULL);
-		new = f(lst);
 		lst = lst->next;
-		new = new->next;
+		tmp = tmp->next;
 	}
 	return (new);
 }
