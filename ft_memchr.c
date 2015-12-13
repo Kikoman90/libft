@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 17:03:12 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/02 14:52:19 by fsidler          ###   ########.fr       */
+/*   Updated: 2015/12/13 18:43:31 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	size_t			i;
 
 	i = 0;
-	while ((UC *)s && i < n)
+	while (i < n)
 	{
 		if (((UC *)s)[i] == (UC)c)
 			return ((void *)(s + i));

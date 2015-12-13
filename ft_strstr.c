@@ -6,34 +6,32 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 17:24:09 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/02 17:43:21 by fsidler          ###   ########.fr       */
+/*   Updated: 2015/12/13 19:01:17 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *total, const char *find)
+char	*ft_strstr(const char *tot, const char *fnd)
 {
 	size_t	i;
 	size_t	j;
 
 	i = 0;
 	j = 0;
-	if (find == NULL || *find == '\0')
-		return ((char *)total);
-	while (total[j])
+	if (*fnd == '\0')
+		return ((char *)tot);
+	while (tot[j])
 	{
-		while (total[j] && find[i] != total[j])
-			j++;
-		while (total[j] && find[i] == total[j])
+		i = 0;
+		while (i < ft_strlen(fnd) - 1 && tot[j] && (UC)fnd[i] == (UC)tot[j])
 		{
 			i++;
 			j++;
 		}
-		if (find[i] == '\0')
-			return ((char *)(total + (j - i)));
-		j = j - i + 1;
-		i = 0;
+		if ((UC)tot[j] - (UC)fnd[i] == 0)
+			return ((char *)(tot + (j - i)));
+		j = (j - i) + 1;
 	}
 	return (NULL);
 }

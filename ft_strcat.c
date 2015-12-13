@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 11:02:37 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/02 18:00:35 by fsidler          ###   ########.fr       */
+/*   Updated: 2015/12/13 19:04:06 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,10 @@ char	*ft_strcat(char *dest, const char *src)
 
 	i = 0;
 	j = 0;
-	if (dest == NULL && *src != '\0')
-		return (NULL);
 	while (dest[j])
 		j++;
 	while (src[i])
-	{
-		dest[j] = src[i];
-		i++;
-		j++;
-	}
+		dest[j++] = src[i++];
 	dest[j] = '\0';
 	return (dest);
 }

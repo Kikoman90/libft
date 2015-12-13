@@ -5,31 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 12:02:49 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/04 16:11:28 by fsidler          ###   ########.fr       */
+/*   Created: 2015/12/13 18:54:35 by fsidler           #+#    #+#             */
+/*   Updated: 2015/12/13 18:57:19 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t			i;
-	char			*t;
+	size_t	i;
+	void	*tmp;
 
 	i = 0;
-	if ((t = (char *)malloc(sizeof(char) * ft_strlen((char *)src) + 1)) == NULL)
+	if ((tmp = (UC *)malloc(sizeof(char) * len)) == NULL)
 		return (NULL);
-	while (((char *)src)[i])
+	while (i < len)
 	{
-		t[i] = ((char *)src)[i];
+		((UC *)tmp)[i] = ((UC *)src)[i];
 		i++;
 	}
 	i = 0;
-	while (i < n)
+	while (i < len)
 	{
-		((char *)dest)[i] = ((char *)t)[i];
+		((UC *)dst)[i] = ((UC *)tmp)[i];
 		i++;
 	}
-	return (dest);
+	return (dst);
 }
