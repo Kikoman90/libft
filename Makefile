@@ -6,7 +6,7 @@
 #    By: fsidler <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/02 11:09:55 by fsidler           #+#    #+#              #
-#    Updated: 2015/12/09 14:37:43 by fsidler          ###   ########.fr        #
+#    Updated: 2015/12/14 15:17:26 by fsidler          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,10 @@ SRC = ft_isascii.c \
 	  ft_lstiter.c \
 	  ft_lstnew.c \
 	  ft_lstmap.c \
+	  ft_isspace.c \
+	  ft_islower.c \
+	  ft_isupper.c \
+	  ft_isblank.c \
 
 OBJ = $(SRC:.c=.o)
 
