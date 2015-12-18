@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 13:21:24 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/17 14:34:29 by fsidler          ###   ########.fr       */
+/*   Updated: 2015/12/18 17:21:12 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ int					ft_isprint(int c);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
-int					ft_isblank(int c);
 int					ft_isspace(int c);
-int					ft_islower(int c);
-int					ft_isupper(int c);
 
 int					ft_tolower(int c);
 int					ft_toupper(int c);
@@ -99,6 +96,7 @@ int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 
 int					ft_abs(int n);
+int					ft_signbit(float n);
 
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
@@ -107,5 +105,9 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+
+double				ft_round(double x);
+double				ft_fdim(double n1, double n2);
+double				ft_copysign(double n1, double n2);
 
 #endif
