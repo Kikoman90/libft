@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/05 13:53:39 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/19 17:31:06 by fsidler          ###   ########.fr       */
+/*   Created: 2015/12/21 18:49:31 by fsidler           #+#    #+#             */
+/*   Updated: 2015/12/21 18:49:32 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,22 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char			*t;
-	unsigned int	i;
+	size_t	len;
+	char	*fresh;
+	int		i;
 
+	if (!s)
+		return (NULL);
+	len = ft_strlen(s);
+	fresh = malloc((len + 1) * sizeof(char));
 	i = 0;
-	t = NULL;
-	if (s && f)
+	if (!fresh)
+		return (NULL);
+	fresh[len] = '\0';
+	while (s[i] != '\0')
 	{
-		if ((t = (char *)malloc(sizeof(char) * ft_strlen(s) + 1)) == NULL)
-			return (NULL);
-		while (s[i])
-		{
-			t[i] = f(i, s[i]);
-			i++;
-		}
-		t[i] = '\0';
+		fresh[i] = (*f)(i, s[i]);
+		i++;
 	}
-	return (t);
+	return (fresh);
 }

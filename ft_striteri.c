@@ -5,19 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/05 12:02:43 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/05 12:10:21 by fsidler          ###   ########.fr       */
+/*   Created: 2015/12/21 18:48:44 by fsidler           #+#    #+#             */
+/*   Updated: 2015/12/21 18:48:46 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	unsigned int	i;
+	unsigned long	i;
 
 	i = 0;
-	if (s && f)
+	if (s)
 	{
-		while (*s)
-			f(i++, s++);
+		while (s[i] != '\0')
+		{
+			(*f)(i, &s[i]);
+			i++;
+		}
 	}
 }

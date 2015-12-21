@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/05 15:03:36 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/13 15:58:34 by fsidler          ###   ########.fr       */
+/*   Created: 2015/12/21 18:49:01 by fsidler           #+#    #+#             */
+/*   Updated: 2015/12/21 18:49:03 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char			*t;
-	unsigned int	j;
+	char	*strjoin;
 
-	j = 0;
-	if ((t = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2))\
-				+ 1)) == NULL)
+	if (!s1)
 		return (NULL);
-	while (*s1)
-		t[j++] = *s1++;
-	while (*s2)
-		t[j++] = *s2++;
-	t[j] = '\0';
-	return (t);
+	strjoin = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
+	if (!strjoin)
+		return (NULL);
+	ft_strcpy(strjoin, s1);
+	ft_strcat(strjoin, s2);
+	return (strjoin);
 }

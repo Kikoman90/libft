@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 17:04:18 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/19 17:30:01 by fsidler          ###   ########.fr       */
+/*   Created: 2015/12/21 18:45:26 by fsidler           #+#    #+#             */
+/*   Updated: 2015/12/21 18:45:34 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	*ft_memalloc(size_t size)
 {
-	void			*dest;
+	void	*mem;
 
-	if ((dest = (void *)malloc(size)) == NULL)
+	mem = (void *)malloc(size * sizeof(size_t));
+	if (!mem)
 		return (NULL);
-	while (size--)
-		((UC *)dest)[size] = 0;
-	return (dest);
+	ft_bzero(mem, size);
+	return (mem);
 }

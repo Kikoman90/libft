@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/05 11:42:39 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/05 11:43:05 by fsidler          ###   ########.fr       */
+/*   Created: 2015/12/21 18:46:27 by fsidler           #+#    #+#             */
+/*   Updated: 2015/12/21 18:46:28 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);
+	write(fd, (unsigned char *)(&c), 1);
 }

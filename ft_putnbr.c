@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/01 17:50:41 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/08 16:49:57 by fsidler          ###   ########.fr       */
+/*   Created: 2015/12/21 18:47:02 by fsidler           #+#    #+#             */
+/*   Updated: 2015/12/21 18:47:04 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,5 @@
 
 void	ft_putnbr(int n)
 {
-	if (n < 0)
-		ft_putchar('-');
-	if (n > 9 || n < -9)
-		ft_putnbr(ft_abs(n / 10));
-	ft_putchar(ft_abs(n % 10) + 48);
+	ft_putnbr_fd(n, 1);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 17:36:49 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/13 15:48:53 by fsidler          ###   ########.fr       */
+/*   Created: 2015/12/21 18:49:45 by fsidler           #+#    #+#             */
+/*   Updated: 2015/12/21 18:49:46 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 char	*ft_strnew(size_t size)
 {
-	char	*dest;
+	char	*text;
 
-	if ((dest = (char *)malloc(sizeof(char) * size + 1)) == NULL)
+	text = (char *)malloc((size + 1) * sizeof(char));
+	if (!text)
 		return (NULL);
-	while (size + 1)
-		dest[size--] = '\0';
-	return (dest);
+	ft_bzero(text, size);
+	text[size] = '\0';
+	return (text);
 }

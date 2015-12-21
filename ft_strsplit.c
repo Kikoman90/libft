@@ -5,68 +5,70 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/07 13:34:37 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/08 12:12:16 by fsidler          ###   ########.fr       */
+/*   Created: 2015/12/21 18:50:04 by fsidler           #+#    #+#             */
+/*   Updated: 2015/12/21 18:50:05 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_number(char const *s, char c)
+static int		ft_nbofwords(char *s, char c)
 {
-	size_t	number;
-	size_t	i;
+	int	i;
+	int	is_word;
 
-	number = 0;
 	i = 0;
-	if (s[i] != c)
-		number++;
-	while (s[i])
+	is_word = 0;
+	while (*s)
 	{
-		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0')
-			number++;
-		i++;
+		if (is_word == 0 && *s != c)
+		{
+			is_word = 1;
+			i++;
+		}
+		else if (is_word == 1 && *s == c)
+			is_word = 0;
+		s++;
 	}
-	return (number);
+	return (i);
 }
 
-static size_t	ft_size(char const *s, char c, size_t i)
+static int		ft_strlenlim(char *s, char c)
 {
-	size_t	size;
+	int	len;
 
-	size = 0;
-	while (s[i] != c)
+	len = 0;
+	while (*s != c && *s != '\0')
 	{
-		i++;
-		size++;
+		len++;
+		s++;
 	}
-	return (size);
+	return (len);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
-	char	**dest;
-	size_t	i;
-	size_t	j;
-	size_t	k;
+	int		nb_ofwords;
+	char	**tab;
+	int		i;
 
-	k = 0;
-	i = 0;
-	j = 0;
-	if ((dest = (char **)malloc(sizeof(char *) * ft_number(s, c) + 1)) == NULL)
+	if (!s)
 		return (NULL);
-	while (s[i] && j < ft_number(s, c))
+	nb_ofwords = ft_nbofwords((char *)s, c);
+	tab = (char **)malloc((nb_ofwords + 1) * sizeof(char*));
+	i = 0;
+	if (!tab)
+		return (NULL);
+	while (nb_ofwords--)
 	{
-		while (s[i] == c && s[i])
-			i++;
-		if ((dest[j] = (char *)malloc(sizeof(char) * ft_size(s, c, i))) == NULL)
+		while (*s == c && *s != '\0')
+			s++;
+		tab[i] = ft_strsub((char *)s, 0, ft_strlenlim((char *)s, c));
+		if (!tab[i])
 			return (NULL);
-		while (s[i] != c && s[i])
-			dest[j][k++] = s[i++];
-		dest[j][k] = '\0';
-		k = 0;
-		j++;
+		s = s + ft_strlenlim((char *)s, c);
+		i++;
 	}
-	dest[j] = NULL;
-	return (dest);
+	tab[i] = NULL;
+	return (tab);
 }

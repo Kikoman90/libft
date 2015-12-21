@@ -5,33 +5,62 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/07 17:35:58 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/13 16:06:26 by fsidler          ###   ########.fr       */
+/*   Created: 2015/12/21 18:44:44 by fsidler           #+#    #+#             */
+/*   Updated: 2015/12/21 18:44:50 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_itoa(int n)
+static long		ft_digitnb(int n)
 {
-	unsigned	i;
-	int			j;
-	char		*str;
+	long		size;
 
-	i = 0;
-	j = n;
+	if (n == 0)
+		return (1);
+	size = 0;
 	if (n < 0)
-		i++;
-	while (j /= 10)
-		i++;
-	if ((str = (char *)malloc(sizeof(char) * i + 2)) == NULL)
+	{
+		size++;
+		n = -n;
+	}
+	while (n != 0)
+	{
+		n /= 10;
+		size++;
+	}
+	return (size++);
+}
+
+static int		ft_sign(int n)
+{
+	if (n < 0)
+		return (1);
+	return (0);
+}
+
+char			*ft_itoa(int n)
+{
+	long		n_long;
+	long		length;
+	char		*fresh;
+
+	n_long = n;
+	length = ft_digitnb(n_long);
+	fresh = (char *)malloc((length + 1) * sizeof(char));
+	if (!fresh)
 		return (NULL);
-	while (str[j])
-		str[j++] = '\0';
-	str[i--] = ft_abs(n % 10) + '0';
-	while (n /= 10)
-		str[i--] = ft_abs(n % 10) + '0';
-	if (str[0] == '\0')
-		str[0] = '-';
-	return (str);
+	fresh[length] = '\0';
+	length--;
+	if (n_long < 0)
+		n_long = -n_long;
+	while (length >= 0)
+	{
+		fresh[length] = (n_long % 10) + '0';
+		length--;
+		n_long /= 10;
+	}
+	if (ft_sign(n))
+		fresh[0] = '-';
+	return (fresh);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/05 11:45:10 by fsidler           #+#    #+#             */
-/*   Updated: 2015/12/05 11:46:29 by fsidler          ###   ########.fr       */
+/*   Created: 2015/12/21 18:46:51 by fsidler           #+#    #+#             */
+/*   Updated: 2015/12/21 18:46:52 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	ft_putendl_fd(char const *s, int fd)
 {
-	while (*s)
-		write(fd, &(*s++), 1);
-	write(fd, "\n", 1);
+	if (s)
+	{
+		ft_putstr_fd(s, fd);
+		ft_putchar_fd('\n', fd);
+	}
 }
